@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Note</title>
+    <script type="text/javascript" src="addnote.js"></script>
+    <style>
+        body { background-color: #ffcccc; font-family: Arial, sans-serif; }
+        .container { 
+            max-width: 400px; 
+            background: yellow; 
+            padding: 20px; 
+            margin: 50px auto; 
+            border-radius: 10px; 
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            display: none; /* Hide content initially */
+            text-align: center;  
+            height: 400px;
+        }
+        input, textarea { 
+            width: 100%; 
+            margin-bottom: 5px; 
+            padding: 8px; 
+            font-size: 18px; /* Bigger font */
+            font-weight: 600; /* Slightly bolder */
+            font-family: cursive;
+            border-radius: 10px; /* Adds rounded edges */
+            border: 2px solid #555; /* Slightly dark border for better visibility */
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        } 
+        #noteTitle {
+            width: 80%; 
+            height: 50px;
+        }
+        #noteDescription {
+            height: 40%;
+            width: 90%; 
+            resize: none;
+        } 
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+        button { 
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 8px;
+        }
+        .save-btn { background: blue; color: white; }
+        .save-btn:hover { background: darkblue; }
+        .discard-btn { background: red; color: white; }
+        .discard-btn:hover { background: darkred; }
+    </style>
+</head>
+<body onload="loadNoteForEdit()">
+    <div class="container" id="content">
+        <h2 id="formTitle">Add Notes Here</h2>
+        
+        <label>Note Title</label>
+        <input type="text" id="noteTitle" placeholder="Enter Title">
+        <div class="error-message" id="titleError">Title cannot be empty!</div>
+        <br>
+        
+        <label>Note Description</label>
+        <textarea id="noteDescription" placeholder="Enter Description"></textarea>
+        <div class="error-message" id="descError">Description cannot be empty!</div>
+        
+        <div class="button-container">
+            <button class="save-btn" onclick="saveNote()">Save</button>
+            <button class="discard-btn" onclick="discardNote()">Discard</button>
+        </div>
+    </div>
+</body>
+</html>

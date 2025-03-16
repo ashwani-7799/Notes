@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Notes / Register</title>
+    <script src = "register.js" defer></script>
+    <script src = "Login.js" defer></script>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+    margin: 0;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+input, select {
+    width: 92%;
+    padding: 12px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(to right, #ff5e62, #ff9966);
+    transform: scale(1.05);
+}
+
+.toggle-link {
+    color: #ff4500;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.toggle-link:hover {
+    text-decoration: underline;
+    color: #e03e00;
+}
+
+
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+    </style>
+</head>
+<body>
+
+
+
+
+    <div class="container" id="container">
+        <h2 id="form-title">Take Notes</h2>
+        <form id="login-form" method="POST">
+            <input type="email" id="email" name = "email" placeholder="Email" required>
+            <input type="password" id="password"  name = "password" placeholder="Password" required>
+            <button>Submit</button>
+        </form>
+        <form id="register-form" style="display: none; " action="RegisterServlet" method="POST">
+            <input type="text" name = "name" id="name" placeholder="Full Name" required>
+            <input type="email" id="reg-email" name = "email" placeholder="Email" required>
+            <input type="password" id="reg-password" name = "password" placeholder="Password" required>
+            <select id="gender" name = "gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="date" id="dob" name = "dob" required >
+            <button onclick="handleRegister()">Register</button>
+        </form>
+        <p>
+            <span id="toggle-text">Don't have an account?</span>
+            <span class="toggle-link" onclick="toggleForm()">Register</span>
+        </p>
+    </div>
+    <script>
+    
+        
+        let isLogin = true;
+
+        function toggleForm() {
+            isLogin = !isLogin;
+            document.getElementById('form-title').innerText = isLogin ? 'Take Notes' : 'Register';
+            document.getElementById('toggle-text').innerText = isLogin ? "Don't have an account?" : "Already have an account?";
+            document.querySelector('.toggle-link').innerText = isLogin ? 'Register' : 'Take Notes';
+            document.getElementById('login-form').style.display = isLogin ? 'block' : 'none';
+            document.getElementById('register-form').style.display = isLogin ? 'none' : 'block';
+        }
+
+
+
+            
+    </script>
+</body>
+</html>
